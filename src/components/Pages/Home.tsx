@@ -1,5 +1,11 @@
 import { Layout } from '../Layout';
 
+import TaskList from './TaskList';
+
 export const Home = () => {
-  return <Layout>teste</Layout>;
+  return (
+    <Layout>
+      <TaskList />
+    </Layout>
+  );
 };
