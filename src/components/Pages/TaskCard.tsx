@@ -18,7 +18,7 @@ interface TaskCardData {
   priority: string;
   tags: string;
   startDate: string;
-  finalDate?: string;
+  finalDate: string;
 }
 
 interface TaskCardProps {
@@ -33,6 +33,10 @@ function Card({ data, index }: TaskCardProps) {
     } else {
       return 'var(--primary-color)';
     }
+  };
+
+  const converToLocalDate = (date: string) => {
+    return new Date(date).toLocaleDateString();
   };
 
   return (
@@ -103,7 +107,8 @@ function Card({ data, index }: TaskCardProps) {
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
             <Text fontWeight={600}>João Carneiro</Text>
             <Text color={'gray.500'}>
-              Início: {data.startDate} - Prazo: {data.finalDate}
+              Início: {converToLocalDate(data.startDate)} - Prazo:{' '}
+              {converToLocalDate(data.finalDate)}
             </Text>
           </Stack>
         </Stack>

@@ -1,48 +1,23 @@
 import { Flex, Spinner } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+
+import { getAllTasks } from '../../apis/tasks';
 
 import TaskCard from './TaskCard';
 
-const tasks = [
-  {
-    title: 'obscure Latin words',
-    description:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.',
-    status: 'Virginia',
-    priority: 'randomised',
-    tags: 'which, which',
-    startDate: '10/10/2010',
-    finalDate: '11/11/2010',
-  },
-  {
-    title: 'There are many variations',
-    description: 'There are many variations of passages of Lorem Ipsum available, but the majority',
-    status: 'embarrassing',
-    priority: 'necessary',
-    tags: 'words, combined',
-    startDate: '12/12/2010',
-    finalDate: '09/09/2010',
-  },
-  {
-    title: 'There are many variations',
-    description: 'There are many variations of passages of Lorem Ipsum available, but the majority',
-    status: 'embarrassing',
-    priority: 'necessary',
-    tags: 'words, combined',
-    startDate: '12/12/2010',
-    finalDate: '09/09/2010',
-  },
-  {
-    title: 'There are many variations',
-    description: 'There are many variations of passages of Lorem Ipsum available, but the majority',
-    status: 'embarrassing',
-    priority: 'necessary',
-    tags: 'words, combined',
-    startDate: '12/12/2010',
-    finalDate: '09/09/2010',
-  },
-];
-
 export default function CardList() {
+  const [tasks, seTasks] = useState([]);
+
+  const loadTasks = async () => {
+    const request = await getAllTasks();
+
+    seTasks(request.data);
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
   return (
     <Flex mt="4" wrap="wrap">
       {tasks.length ? (
