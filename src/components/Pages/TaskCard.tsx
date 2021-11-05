@@ -51,7 +51,7 @@ function Card({ data, index }: TaskCardProps) {
         w={'full'}
         mx="4"
         bg={useColorModeValue('white', 'gray.900')}
-        boxShadow="dark-lg"
+        boxShadow="2xl"
         rounded="md"
         p={6}
         overflow={'hidden'}

@@ -25,7 +25,7 @@ export default function CardList() {
           return <TaskCard key={index} data={task} index={index} />;
         })
       ) : (
-        <Flex justify="center">
+        <Flex justify="center" w="100%" mt="10%">
           <Spinner
             m="0 auto"
             thickness="4px"
